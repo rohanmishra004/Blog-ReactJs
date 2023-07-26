@@ -22,6 +22,12 @@ const Home = () => {
                 author: "User 1",
                 id:3
             },
+            {
+                title: "New Work4",
+                body: 'lorem ipsum ...',
+                author: "User 2",
+                id:4
+            },
         ]
     )
 
