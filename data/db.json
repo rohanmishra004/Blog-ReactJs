@@ -1,0 +1,22 @@
+{
+    "blogs":[
+        {
+            "title":"My First Blog",
+            "body":"Why do we use it?\n It is a long sentence",
+            "author":"Mario",
+            "id":1
+        },
+         {
+            "title":"My Second Blog",
+            "body":"Why do we use it?\n It is a long sentence",
+            "author":"Luigi",
+            "id":2
+        },
+         {
+            "title":"My Third Blog",
+            "body":"Why do we use it?\n It is a long sentence",
+            "author":"Mario",
+            "id":3
+        }
+    ]
+}

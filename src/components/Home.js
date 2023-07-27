@@ -2,58 +2,28 @@ import { useState , useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-    const [name, setName] = useState('mario')
-    const [blogs, setBlogs] = useState(
-        [
-            {
-                title: "New Work1",
-                body: 'lorem ipsum ...',
-                author: "User 1",
-                id:1
-            },
-            {
-                title: "New Work2",
-                body: 'lorem ipsum ...',
-                author: "User 2",
-                id:2
-            },
-            {
-                title: "New Work3",
-                body: 'lorem ipsum ...',
-                author: "User 1",
-                id:3
-            },
-            {
-                title: "New Work4",
-                body: 'lorem ipsum ...',
-                author: "User 2",
-                id:4
-            },
-        ]
-    )
+    const [blogs, setBlogs] = useState(null);
 
-    const handleDeleteBlog = (id) => {
-        const newBlogs = blogs.filter((blog) => (
-            blog.id !== id
-        ));
-        setBlogs(newBlogs)
-    }
 
-    //UseEffect mainly used to fetch data or do some authentication which is known as sideEffect in ReactJs
 
-    //Dependencies [] prevent useEffect to run at every render , it only runs when the dependency which is declared inside the useEffect change
 
-    //if we add the name dependency here then useEffect will only run when name value changes and not at any other moment
+    //here we are fetching the data with the fetch call and updating the blogs with setBlogs with the data we get in response
     useEffect(() => {
-        console.log('UseEffect triggerd');
-        console.log(name)
-    },[name])
+        fetch("http://localhost:8000/blogs")
+            .then(response => {
+                return response.json()
+            }).then((data) => {
+                console.log(data)
+                setBlogs(data)
+            });
+    },[])
 
     return ( 
         <div className="home">
-            <BlogList blogs={blogs } title={"All Blogs"} handleDeleteBlog={handleDeleteBlog} />
-            <button onClick={() => setName('luigi')}>Change name</button>
-            <p>{name }</p>
+            {/* here blogs is coming from fetch call which takes some time to reach therefore the initial value of blogs is null hence we have added the && to check blogs data and then update */}
+
+            {/* This is called contiondal templating , thereform Logical && evaluates left first and if its null/false it will not process the right side  */}
+            {blogs && <BlogList blogs={blogs} title={"All Blogs"}  />}
         </div>
      );
 }

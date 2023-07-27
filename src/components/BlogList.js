@@ -1,6 +1,6 @@
 const BlogList = (props) => {
 
-    const { blogs , title , handleDeleteBlog } = props;
+    const { blogs , title  } = props;
 
 
     return ( 
@@ -10,9 +10,6 @@ const BlogList = (props) => {
                 <div className="blog-preview" key={blog.id}>
                     <h2>{blog.title}</h2>
                     <p>Written By {blog.author}</p>
-                    <button onClick={() => {
-                        handleDeleteBlog(blog.id)
-                    }}>Delete Blog</button>
                 </div>
             ))}
         </div>
