@@ -3,6 +3,8 @@ import Create from './components/Create'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import BlogDetails from './components/BlogDetails';
+import NotFound from './components/NotFound';
+
 
 function App() {
   return (
@@ -19,7 +21,11 @@ function App() {
             </Route>
             <Route exact path='/blogs/:id'>
             < BlogDetails/>
-          </Route>
+            </Route>
+            {/* If none of the routes match the above , then it will show this component */}
+            <Route path="*">
+              < NotFound />
+            </Route>
         </Switch>
       </div>
     </div>
